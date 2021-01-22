@@ -42,21 +42,4 @@ class OrderItemTest extends TestCase
         self::assertEquals($this->orderItem->show(1), $this->getMockedResponseBody());
     }
 
-    /** @test * */
-    public function can_show_issued_info_for_order(): void
-    {
-        $this->mockExpectedHttpResponse([
-            'data' => [
-                [
-                    'item_id' => 'abc123',
-                    'sku' => '2239199669790',
-                    'masked_pan' => '************1350',
-                    'masked_serial' => '****4360',
-                ],
-            ]
-        ]);
-
-        self::assertEquals($this->orderItem->info('hash-here'), $this->getMockedResponseBody());
-    }
-
 }

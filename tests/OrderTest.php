@@ -2,11 +2,7 @@
 
 namespace MBLSolutions\Simfoni\Tests;
 
-use MBLSolutions\Simfoni\Contact;
-use MBLSolutions\Simfoni\Decrypter;
 use MBLSolutions\Simfoni\Order;
-use MBLSolutions\Simfoni\OrderItem;
-use MBLSolutions\Simfoni\Product;
 use MBLSolutions\Simfoni\Simfoni;
 
 class OrderTest extends TestCase
@@ -128,24 +124,6 @@ class OrderTest extends TestCase
             'start_date' => '2021-01-01T00:00:00+0000',
             'end_date' => '2021-12-01T00:00:00+0000',
         ]), $this->getMockedResponseBody());
-    }
-
-    /** @test */
-    public function can_decrypt_order_information(): void
-    {
-        $base64Key = 'b1Nr/nNInIcZqb2AfNA6HHQi50K0pFi+5+5F0gm/s1E=';
-        $encryptedString = 'eyJpdiI6InFiV0d1YnRCNmZYeGhkSGJSNlA4eHc9PSIsInZhbHVlIjoicUFDejBQWWEwa29jbno5b3ZyN0Ywdz09IiwibWFjIjoiNWM1ZjdjM2MxNTliNGNkNDcyMmUxMWI2NDhjYmNiOTc0ZTUzNmZlOGI2ZjVlZjNkY2I0ZTgwZTcyM2EzOTA5NSJ9';
-
-        self::assertEquals('test', unserialize($this->order->decrypt($base64Key, $encryptedString)));
-    }
-
-    /** @test */
-    public function can_decrypt_order_information_alternative(): void
-    {
-        $base64Key = 'b1Nr/nNInIcZqb2AfNA6HHQi50K0pFi+5+5F0gm/s1E=';
-        $encryptedString = 'eyJpdiI6InFiV0d1YnRCNmZYeGhkSGJSNlA4eHc9PSIsInZhbHVlIjoicUFDejBQWWEwa29jbno5b3ZyN0Ywdz09IiwibWFjIjoiNWM1ZjdjM2MxNTliNGNkNDcyMmUxMWI2NDhjYmNiOTc0ZTUzNmZlOGI2ZjVlZjNkY2I0ZTgwZTcyM2EzOTA5NSJ9';
-
-        self::assertEquals('test', unserialize((new Decrypter($base64Key, $encryptedString))->decrypt()));
     }
 
 }

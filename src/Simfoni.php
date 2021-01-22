@@ -20,7 +20,7 @@ class Simfoni
     public const AGENT = 'Simfoni-PHP';
 
     /** @var string  */
-    public const VERSION = '1.0.0';
+    public const VERSION = '0.2.0';
 
     /**
      * Override the default baseUri

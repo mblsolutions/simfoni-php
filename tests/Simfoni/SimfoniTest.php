@@ -12,7 +12,7 @@ class SimfoniTest extends TestCase
     /** @test **/
     public function can_get_package_version()
     {
-        self::assertEquals('1.0.0', Simfoni::VERSION);
+        self::assertIsString(Simfoni::VERSION);
     }
 
     /** @test **/

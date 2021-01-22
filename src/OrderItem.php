@@ -18,15 +18,4 @@ class OrderItem extends ApiResource
         return $this->getApiRequestor()->getRequest('/api/order/'.$orderId.'/items');
     }
 
-    /**
-     * Show issuance information for order
-     *
-     * @param  string  $hash
-     * @return array
-     */
-    public function info(string $hash): array
-    {
-        return $this->getApiRequestor()->getRequest('/api/order/'.$hash.'/issuedinfo');
-    }
-
 }

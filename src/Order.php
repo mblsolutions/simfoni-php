@@ -60,23 +60,4 @@ class Order extends ApiResource
         return $this->getApiRequestor()->getRequest('/api/order', $params);
     }
 
-    /**
-     * @param $base64Key
-     * @param $encryptedString
-     * @param  string  $method
-     * @return false|string
-     */
-    public function decrypt(string $base64Key, string $encryptedString, $method = 'AES-256-CBC')
-    {
-        $key = base64_decode($base64Key);
-
-        $encryptObject = base64_decode($encryptedString);
-
-        $encryptArray = json_decode($encryptObject, false);
-        $iv = base64_decode($encryptArray->iv);
-        $encryptObjectValue = $encryptArray->value;
-
-        return openssl_decrypt($encryptObjectValue, $method, $key, 0, $iv);
-    }
-
 }
