@@ -10,7 +10,7 @@ class Authentication extends OAuthResource
 {
 
     /**
-     * Authenticate with the Inspired Deck API using Password Grant
+     * Authenticate with the Simfoni API using Password Grant
      *
      * @param int $client
      * @param string $secret

@@ -16,11 +16,12 @@ class Simfoni
     /** @var bool $verify */
     private static $verifySSL = true;
 
+    /** @var string $webhookSignature */
+    private static $webhookSignature;
+
     /** @var string */
     public const AGENT = 'Simfoni-PHP';
-
-    /** @var string  */
-    public const VERSION = '0.2.0';
+    public const VERSION = '1.0.0';
 
     /**
      * Override the default baseUri
@@ -48,7 +49,7 @@ class Simfoni
     /**
      * Set the Bearer Token
      *
-     * @param string $token
+     * @param  string  $token
      * @return void
      */
     public static function setToken(string $token)
@@ -67,16 +68,16 @@ class Simfoni
         $token = self::$token;
 
         if ($token === null) {
-            throw new MissingTokenException('Missing Bearer Token in Inspired Deck Configuration');
+            throw new MissingTokenException('Missing Bearer Token in Simfoni Configuration');
         }
 
         return $token;
     }
 
     /**
-     * Set Verify SSL
+     * Set VerifyRequest SSL
      *
-     * @param bool $verify
+     * @param  bool  $verify
      * @return void
      */
     public static function setVerifySSL(bool $verify): void
@@ -85,13 +86,34 @@ class Simfoni
     }
 
     /**
-     * Get Verify SSL
+     * Get VerifyRequest SSL
      *
      * @return bool
      */
     public static function getVerifySSL(): bool
     {
         return self::$verifySSL;
+    }
+
+    /**
+     * Set Webhook Signature
+     *
+     * @param  string  $webhookSignature
+     * @return void
+     */
+    public static function setWebhookSignature(string $webhookSignature): void
+    {
+        self::$webhookSignature = $webhookSignature;
+    }
+
+    /**
+     * Get Webhook Signature
+     *
+     * @return string|null
+     */
+    public static function getWebhookSignature(): ?string
+    {
+        return self::$webhookSignature;
     }
 
 }

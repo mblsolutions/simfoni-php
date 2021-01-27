@@ -13,7 +13,7 @@ class Decrypt
     protected $cipher;
 
     /**
-     * Inspired Deck Data Decryption
+     * Simfoni Data Decryption
      *
      * @param string $key
      * @param string $cipher

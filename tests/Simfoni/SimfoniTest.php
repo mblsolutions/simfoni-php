@@ -75,4 +75,18 @@ class SimfoniTest extends TestCase
         self::assertFalse(Simfoni::getVerifySSL());
     }
 
+    /** @test **/
+    public function can_get_webhook_signature(): void
+    {
+        self::assertNull(Simfoni::getWebhookSignature());
+    }
+
+    /** @test **/
+    public function can_set_webhook_signature(): void
+    {
+        Simfoni::setWebhookSignature('some-random-signature-here');
+
+        self::assertEquals('some-random-signature-here', Simfoni::getWebhookSignature());
+    }
+
 }
