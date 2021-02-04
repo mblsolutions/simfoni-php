@@ -18,7 +18,7 @@ class Decrypt
      * @param string $key
      * @param string $cipher
      */
-    public function __construct(string $key, string $cipher = 'AES-128-CBC')
+    public function __construct(string $key, string $cipher = 'AES-256-CBC')
     {
         $this->key = base64_decode($key);
         $this->cipher = $cipher;

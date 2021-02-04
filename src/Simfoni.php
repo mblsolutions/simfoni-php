@@ -98,10 +98,10 @@ class Simfoni
     /**
      * Set Webhook Signature
      *
-     * @param  string  $webhookSignature
+     * @param  string|null  $webhookSignature
      * @return void
      */
-    public static function setWebhookSignature(string $webhookSignature): void
+    public static function setWebhookSignature(string $webhookSignature = null): void
     {
         self::$webhookSignature = $webhookSignature;
     }
