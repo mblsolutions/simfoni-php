@@ -56,4 +56,25 @@ class ProductTest extends TestCase
         self::assertEquals($this->product->show(1), $this->getMockedResponseBody());
     }
 
+    /** @test * */
+    public function can_list_product_sync(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'sku' => 'SAMPLE SKU',
+                    'name' => 'Sample Product',
+                ],
+                [
+                    'id' => 2,
+                    'sku' => 'ANOTHER SKU',
+                    'name' => 'Another Product',
+                ],
+            ]
+        ]);
+
+        self::assertEquals($this->product->sync(), $this->getMockedResponseBody());
+    }
+
 }
