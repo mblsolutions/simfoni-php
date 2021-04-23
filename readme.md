@@ -1,6 +1,8 @@
 # Simfoni interface for PHP
 
-<a href="https://travis-ci.org/mblsolutions/simfoni-php"><img src="https://travis-ci.org/mblsolutions/simfoni-php.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/mblsolutions/simfoni-php"><img src="https://github.com/mblsolutions/simfoni-php/actions/workflows/simfoni-php.yml/badge.svg"></a>
+<a href="https://packagist.org/packages/mblsolutions/simfoni-php"><img src="https://img.shields.io/packagist/v/mblsolutions/simfoni-php" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/mblsolutions/simfoni-php"><img src="https://img.shields.io/packagist/l/mblsolutions/simfoni-php" alt="License"></a>
 
 The Simfoni Interface for PHP gives you an API interface into the Simfoni Platform for your PHP applications.
 
