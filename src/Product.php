@@ -35,7 +35,7 @@ class Product extends ApiResource
      */
     public function sync(): array
     {
-        return $this->getApiRequestor()->getRequest('/api/account/product');
+        return $this->getApiRequestor()->getRequest('/api/account/product/sync');
     }
 
 }
