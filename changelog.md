@@ -1,3 +1,7 @@
+## v2.4.1
+
++ PHP 7.1 compatability
+
 ## v2.4.0
 
 + Fix verify webhook signature method
