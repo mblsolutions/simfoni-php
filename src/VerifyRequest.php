@@ -26,17 +26,24 @@ class VerifyRequest
     /**
      * Validate Request
      *
-     * @param  array  $request
+     * @param array $request
+     * @param string $excepted
      * @return mixed
      */
-    public function validates(array $request): bool
+    public function validates(array $request, string $excepted): bool
+    {
+       $hash = $this->computeExpectedHash($request);
+
+        return $hash === $excepted;
+    }
+
+
+    public function computeExpectedHash(array $request): string
     {
         $signature = explode(',', $this->headerSignature);
         $time = $signature[0] ?? null;
 
-        $requestHash = hash('SHA256', $this->webhookSignature.$time.json_encode($request));
-
-        return in_array($requestHash, $signature, true);
+        return hash('SHA256', $this->webhookSignature.$time.json_encode($request));
     }
 
 }

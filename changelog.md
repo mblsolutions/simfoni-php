@@ -1,3 +1,7 @@
+## v2.4.0
+
++ Fix verify webhook signature method
+
 ## v2.3.0
 
 + Update issued info query parameters to array from string
