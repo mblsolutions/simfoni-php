@@ -26,9 +26,9 @@ class Order extends ApiResource
      * @param  string  $id
      * @return array
      */
-    public function cancel(string $id): array
+    public function cancel(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id);
+        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id.'?type='.$type);
     }
 
     /**
