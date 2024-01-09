@@ -12,7 +12,7 @@ class DeliveryMethodTest extends TestCase
     protected $deliveryMethod;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

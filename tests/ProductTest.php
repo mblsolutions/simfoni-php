@@ -12,7 +12,7 @@ class ProductTest extends TestCase
     protected $product;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

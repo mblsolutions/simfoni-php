@@ -13,7 +13,7 @@ class OrderItemTest extends TestCase
     protected $orderItem;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

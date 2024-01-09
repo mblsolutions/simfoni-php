@@ -11,7 +11,7 @@ class AccountTest extends TestCase
     protected $account;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
