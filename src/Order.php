@@ -46,9 +46,9 @@ class Order extends ApiResource
      * @param  string  $id
      * @return array
      */
-    public function show(string $id): array
+    public function show(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->getRequest('/api/order/'.$id);
+        return $this->getApiRequestor()->getRequest('/api/order/'.$id.'?type='.$type);
     }
 
     /**
