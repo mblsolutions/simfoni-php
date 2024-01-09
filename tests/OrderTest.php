@@ -57,10 +57,10 @@ class OrderTest extends TestCase
     public function can_cancel_order_by_ref(): void
     {
         $this->mockExpectedHttpResponse([
-            'message' => 'Order ref abc123 cancelled.'
+            'message' => 'Order ref-1111 cancelled.'
         ]);
 
-        self::assertEquals($this->order->cancel('abc123', 'ref'), $this->getMockedResponseBody());
+        self::assertEquals($this->order->cancel('ref-1111', 'ref'), $this->getMockedResponseBody());
     }
 
     /** @test * */
@@ -93,6 +93,21 @@ class OrderTest extends TestCase
         ]);
 
         self::assertEquals($this->order->show(1), $this->getMockedResponseBody());
+    }
+
+    /** @test * */
+    public function can_show_order_by_reference(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'reference' => 'ref-1111',
+                ],
+            ]
+        ]);
+
+        self::assertEquals($this->order->show('ref-1111', 'ref'), $this->getMockedResponseBody());
     }
 
     /** @test * */
