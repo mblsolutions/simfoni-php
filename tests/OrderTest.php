@@ -57,7 +57,7 @@ class OrderTest extends TestCase
     public function can_cancel_order_by_ref(): void
     {
         $this->mockExpectedHttpResponse([
-            'message' => 'Order #1 cancelled.'
+            'message' => 'Order ref abc123 cancelled.'
         ]);
 
         self::assertEquals($this->order->cancel('abc123', 'ref'), $this->getMockedResponseBody());
