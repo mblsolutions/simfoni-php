@@ -41,9 +41,10 @@ class Order extends ApiResource
     }
 
     /**
-     * Show Product
+     * Show Order
      *
-     * @param  string  $id
+     * @param string $id
+     * @param string $type
      * @return array
      */
     public function show(string $id, string $type = 'id'): array
