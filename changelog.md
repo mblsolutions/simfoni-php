@@ -1,3 +1,9 @@
+## v2.5.0
+
++ PHP ^8.0 compatability
++ Add ability to pass id type to cancel and show order methods
++ Add new resend webhook function
+
 ## v2.4.1
 
 + PHP 7.1 compatability

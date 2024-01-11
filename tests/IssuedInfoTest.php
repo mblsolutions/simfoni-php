@@ -11,7 +11,7 @@ class IssuedInfoTest extends TestCase
     protected $issuedInfo;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

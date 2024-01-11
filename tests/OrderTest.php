@@ -11,7 +11,7 @@ class OrderTest extends TestCase
     protected $order;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -54,6 +54,16 @@ class OrderTest extends TestCase
     }
 
     /** @test * */
+    public function can_cancel_order_by_ref(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'message' => 'Order ref-1111 cancelled.'
+        ]);
+
+        self::assertEquals($this->order->cancel('ref-1111', 'ref'), $this->getMockedResponseBody());
+    }
+
+    /** @test * */
     public function can_search_orders(): void
     {
         $this->mockExpectedHttpResponse([
@@ -83,6 +93,21 @@ class OrderTest extends TestCase
         ]);
 
         self::assertEquals($this->order->show(1), $this->getMockedResponseBody());
+    }
+
+    /** @test * */
+    public function can_show_order_by_reference(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'reference' => 'ref-1111',
+                ],
+            ]
+        ]);
+
+        self::assertEquals($this->order->show('ref-1111', 'ref'), $this->getMockedResponseBody());
     }
 
     /** @test * */

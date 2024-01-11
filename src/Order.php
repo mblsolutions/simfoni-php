@@ -26,9 +26,9 @@ class Order extends ApiResource
      * @param  string  $id
      * @return array
      */
-    public function cancel(string $id): array
+    public function cancel(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id);
+        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id.'?type='.$type);
     }
 
     /**
@@ -41,14 +41,15 @@ class Order extends ApiResource
     }
 
     /**
-     * Show Product
+     * Show Order
      *
-     * @param  string  $id
+     * @param string $id
+     * @param string $type
      * @return array
      */
-    public function show(string $id): array
+    public function show(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->getRequest('/api/order/'.$id);
+        return $this->getApiRequestor()->getRequest('/api/order/'.$id.'?type='.$type);
     }
 
     /**

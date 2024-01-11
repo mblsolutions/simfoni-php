@@ -11,7 +11,7 @@ class ClientTest extends TestCase
     protected $client;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
