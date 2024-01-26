@@ -1,3 +1,7 @@
+## v2.6.0
+
++ Update validation exception to include specific errors data
+
 ## v2.5.0
 
 + PHP ^8.0 compatability
