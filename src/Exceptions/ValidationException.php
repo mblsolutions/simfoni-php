@@ -61,8 +61,7 @@ class ValidationException extends Exception
     {
         $fullError = null;
 
-        if($json['errors'])
-        {
+        if ($json['errors'])  {
             $fullError = json_encode(
                 [
                     $json['message'],
