@@ -1,3 +1,7 @@
+## v2.6.2
+
++ Pass type parameter in param array for show and cancel order functions 
+
 ## v2.6.1
 
 + Separate formatting of error data for exception message and default attribute

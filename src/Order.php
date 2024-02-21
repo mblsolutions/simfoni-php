@@ -28,7 +28,7 @@ class Order extends ApiResource
      */
     public function cancel(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id.'?type='.$type);
+        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id, ['type' => $type]);
     }
 
     /**
@@ -49,7 +49,7 @@ class Order extends ApiResource
      */
     public function show(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->getRequest('/api/order/'.$id.'?type='.$type);
+        return $this->getApiRequestor()->getRequest('/api/order/'.$id, ['type' => $type]);
     }
 
     /**
