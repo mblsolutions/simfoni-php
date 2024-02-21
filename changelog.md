@@ -1,3 +1,7 @@
+## v2.6.1
+
++ Separate formatting of error data for exception message and default attribute
+
 ## v2.6.0
 
 + Update validation exception to include specific errors data

@@ -28,7 +28,9 @@ class ValidationException extends Exception
             $this->errors = $this->formatErrorDetails($this->json);
         }
 
-        parent::__construct($this->errors ?? $message, $code, $previous);
+        $exceptionMessage = $this->formatErrorDetailsForExceptionMessage($this->json, $message);
+
+        parent::__construct($exceptionMessage, $code, $previous);
     }
 
     /**
@@ -57,20 +59,18 @@ class ValidationException extends Exception
      * @param array $json
      * @return array|mixed
      */
+    private function formatErrorDetailsForExceptionMessage(array $json = [], $message = null)
+    {
+        $default = $json['message'] ?? $message;
+
+        $details = $json['errors'] ? [$default, $json['errors']] : ['message' => $default];
+
+        return json_encode($details);
+    }
+
     private function formatErrorDetails(array $json = [])
     {
-        $fullError = null;
-
-        if ($json['errors'])  {
-            $fullError = json_encode(
-                [
-                    $json['message'],
-                    $json['errors']
-                ]
-            );
-        }
-
-        return $fullError ?? $json['message'];
+        return $json['errors'] ?? ['message' => [$json['message']]];
     }
 
 }
