@@ -12,24 +12,11 @@ class VerifyRequestTest extends TestCase
     {
         $json = '{"event":"order.complete","created":1656066775,"live":true,"version":"v4.12.15","data":{"order_id":7290109,"hash":"eyJpdiI6ImJSMGgwMHI3cEZcL00xS0hwTk5WaHdnPT0iLCJ2YWx1ZSI6IkFmaUNZdHdET1JRbFdiYzQ1b2o5UGc9PSIsIm1hYyI6ImUzYjFkODMxZTZlZTYwOTE3ZGIyZjUwYTk2NjEwMzg0MmM5ZGY4YTljZDExMjhhZDNiOWE2NGIwNWZiNjlkMjkifQ=="}}';
         $request = json_decode($json, true);
+        $simfoniSignature = $this->computeExpectedHash($request, 'Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl');
 
-        $validator = new VerifyRequest('Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl', '1656066775,bb23e6712079908c80e1e3c9e88876db59a3c0750bc6e0d4a0be69be5de4c17d');
+        $validator = new VerifyRequest('Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl', $simfoniSignature);
 
-        $this->assertTrue($validator->validates($request, 'a477f82d3cef19b4fd82096a109d2fe20265e3e2bead0e4128a9fec2bbedb664'));
-    }
-
-    /** @test */
-    public function simfoni_signature_test(): void
-    {
-        $json = '{"event":"order.complete","created":1656066775,"live":true,"version":"v4.12.15","data":{"order_id":7290109,"hash":"eyJpdiI6ImJSMGgwMHI3cEZcL00xS0hwTk5WaHdnPT0iLCJ2YWx1ZSI6IkFmaUNZdHdET1JRbFdiYzQ1b2o5UGc9PSIsIm1hYyI6ImUzYjFkODMxZTZlZTYwOTE3ZGIyZjUwYTk2NjEwMzg0MmM5ZGY4YTljZDExMjhhZDNiOWE2NGIwNWZiNjlkMjkifQ=="}}';
-        $request = json_decode($json, true);
-
-        $sig = 'Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl';
-        $signature = explode(',', '1656066775,bb23e6712079908c80e1e3c9e88876db59a3c0750bc6e0d4a0be69be5de4c17d');
-
-        $hash = hash('SHA256', $sig . $signature[0] . json_encode($request));
-
-        $this->assertEquals('a477f82d3cef19b4fd82096a109d2fe20265e3e2bead0e4128a9fec2bbedb664', $hash);
+        $this->assertTrue($validator->validates($request));
     }
 
     /** @test **/
@@ -40,11 +27,11 @@ class VerifyRequestTest extends TestCase
 
         $validator = new VerifyRequest(
             'Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl',
-            '1656066775,bb23e6712079908c80e1e3c9e88876db59a3c0750bc6e0d4a0be69be5de4c17d'
+            $this->computeExpectedHash($request, 'Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl')
         );
 
         $this->assertEquals(
-            'a477f82d3cef19b4fd82096a109d2fe20265e3e2bead0e4128a9fec2bbedb664',
+            '4d6db9405ea37e2f45196f957bf5ffaab409be58ff8a29f51435070f4c89c20f',
             $validator->computeExpectedHash($request)
         );
     }
@@ -56,6 +43,11 @@ class VerifyRequestTest extends TestCase
         self::assertFalse($verifyRequest->validates([
             'data' => 'sample'
         ], 'this-is-not-valid'));
+    }
+
+    private function computeExpectedHash($request, $signature): string
+    {
+        return hash('SHA256', $signature.json_encode($request));
     }
 
 }

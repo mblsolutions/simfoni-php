@@ -1,3 +1,7 @@
+## v3.0.0
+
++ Change hash validation for updated signature from Simfoni app
+
 ## v2.6.2
 
 + Pass type parameter in param array for show and cancel order functions 
