@@ -1,3 +1,7 @@
+## v3.0.1
+
++ Merge in validation fix from 2.x branch
+
 ## v3.0.0
 
 + Change hash validation for updated signature from Simfoni app
