@@ -63,7 +63,7 @@ class ValidationException extends Exception
     {
         $default = $json['message'] ?? $message;
 
-        $details = $json['errors'] ? [$default, $json['errors']] : ['message' => $default];
+        $details = array_key_exists('errors', $json) ? [$default, $json['errors']] : ['message' => $default];
 
         return json_encode($details);
     }

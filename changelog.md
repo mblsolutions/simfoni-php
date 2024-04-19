@@ -1,3 +1,7 @@
+## v2.6.3
+
++ Update validation exception to handle when errors isn't set in the json array
+
 ## v2.6.2
 
 + Pass type parameter in param array for show and cancel order functions 
