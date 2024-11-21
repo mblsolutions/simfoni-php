@@ -7,6 +7,7 @@ use MBLSolutions\Simfoni\Api\ApiResource;
 class Order extends ApiResource
 {
 
+    protected $version = "";
     /**
      * Create an Order
      *
@@ -15,7 +16,7 @@ class Order extends ApiResource
      */
     public function create(array $params = []): array
     {
-        return $this->getApiRequestor()->postRequest('/api/order/', $params);
+        return $this->getApiRequestor()->postRequest("/api/{$this->version}order/", $params);
     }
 
 
@@ -28,7 +29,7 @@ class Order extends ApiResource
      */
     public function cancel(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->deleteRequest('/api/order/'.$id, ['type' => $type]);
+        return $this->getApiRequestor()->deleteRequest("/api/{$this->version}order/" . $id, ['type' => $type]);
     }
 
     /**
@@ -37,7 +38,7 @@ class Order extends ApiResource
      */
     public function search(array $params = []): array
     {
-        return $this->getApiRequestor()->postRequest('/api/search/order', $params);
+        return $this->getApiRequestor()->postRequest("/api/{$this->version}search/order", $params);
     }
 
     /**
@@ -49,7 +50,7 @@ class Order extends ApiResource
      */
     public function show(string $id, string $type = 'id'): array
     {
-        return $this->getApiRequestor()->getRequest('/api/order/'.$id, ['type' => $type]);
+        return $this->getApiRequestor()->getRequest("/api/{$this->version}order/" . $id, ['type' => $type]);
     }
 
     /**
@@ -58,7 +59,6 @@ class Order extends ApiResource
      */
     public function all(array $params = []): array
     {
-        return $this->getApiRequestor()->getRequest('/api/order', $params);
+        return $this->getApiRequestor()->getRequest("/api/{$this->version}order", $params);
     }
-
 }
