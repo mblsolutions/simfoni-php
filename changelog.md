@@ -1,3 +1,7 @@
+## v3.1.0
+
++ Add support for V2 order requests
+
 ## v3.0.1
 
 + Merge in validation fix from 2.x branch
