@@ -1,3 +1,7 @@
+## v3.1.1
+
++ Add V2 cancel link endpoint
+
 ## v3.1.0
 
 + Add support for V2 order requests
