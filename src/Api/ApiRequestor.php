@@ -114,6 +114,15 @@ class ApiRequestor
         ]);
     }
 
+    public function deleteJson(string $uri, ?array $payload = null, array $headers = null): array
+    {
+        return $this->makeHttpRequest('delete', $uri, [
+            'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
+            'verify' => Simfoni::getVerifySSL(),
+            'json' => $payload,
+        ]);
+    }
+
     /**
      * Get the Default Request Headers
      *
