@@ -1,3 +1,7 @@
+## v3.1.2
+
++ Update V2 cancel link endpoint to use more generic signature.
+
 ## v3.1.1
 
 + Add V2 cancel link endpoint
