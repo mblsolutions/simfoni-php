@@ -1,3 +1,7 @@
+## v3.1.3
+
++ Use explicitly nullable types to support PHP 8.4.
+
 ## v3.1.2
 
 + Update V2 cancel link endpoint to use more generic signature.
