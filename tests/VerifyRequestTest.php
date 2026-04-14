@@ -36,6 +36,22 @@ class VerifyRequestTest extends TestCase
         );
     }
 
+    /** @test **/
+    public function can_verify_legacy_request_signature_with_time(): void
+    {
+        $json = '{"event":"order.complete","created":1656066775,"live":true,"version":"v4.12.15","data":{"order_id":7290109,"hash":"eyJpdiI6ImJSMGgwMHI3cEZcL00xS0hwTk5WaHdnPT0iLCJ2YWx1ZSI6IkFmaUNZdHdET1JRbFdiYzQ1b2o5UGc9PSIsIm1hYyI6ImUzYjFkODMxZTZlZTYwOTE3ZGIyZjUwYTk2NjEwMzg0MmM5ZGY4YTljZDExMjhhZDNiOWE2NGIwNWZiNjlkMjkifQ=="}}';
+        $request = json_decode($json, true);
+
+        $webhookSignature = 'Yih7Ry8MkNaFPfzv6S4ZMCMC59FWMfQl';
+        $time = '1656066775';
+        $hash = hash('SHA256', $webhookSignature.$time.json_encode($request));
+        $headerSignature = $time.','.$hash;
+
+        $validator = new VerifyRequest($webhookSignature, $headerSignature);
+
+        $this->assertTrue($validator->validates($request));
+    }
+
     /** @test */
     public function invalid_requests_return_as_invalid(): void
     {
