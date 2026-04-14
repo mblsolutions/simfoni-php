@@ -33,7 +33,31 @@ class VerifyRequest
     {
         $expected = $this->computeExpectedHash($request);
 
-        return $expected === $this->headerSignature;
+        if ($expected === $this->headerSignature) {
+            return true;
+        }
+
+        return $this->validateLegacy($request);
+    }
+
+    /**
+     * Validate Legacy Request (with time component)
+     *
+     * @param array $request
+     * @return bool
+     */
+    private function validateLegacy(array $request): bool
+    {
+        $signature = explode(',', $this->headerSignature);
+        $time = $signature[0] ?? null;
+
+        if ($time === null || count($signature) < 2) {
+            return false;
+        }
+
+        $expected = hash('SHA256', $this->webhookSignature.$time.json_encode($request));
+
+        return in_array($expected, $signature, true);
     }
 
 
