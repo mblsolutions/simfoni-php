@@ -20,7 +20,7 @@ class ValidationException extends Exception
      * @param int $code
      * @param Throwable|null $previous
      */
-    public function __construct(string $message, int $code, Throwable $previous = null)
+    public function __construct(string $message, int $code, ?Throwable $previous = null)
     {
         $this->json = json_decode($message, true);
 
@@ -59,7 +59,7 @@ class ValidationException extends Exception
      * @param array $json
      * @return array|mixed
      */
-    private function formatErrorDetailsForExceptionMessage(array $json = [], $message = null)
+    private function formatErrorDetailsForExceptionMessage(array $json = [], ?string $message = null)
     {
         $default = $json['message'] ?? $message;
 

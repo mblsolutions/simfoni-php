@@ -51,7 +51,7 @@ class ApiRequestor
      * @return array
      * @throws mixed
      */
-    public function getRequest(string $uri, array $params = [], array $headers = null): array
+    public function getRequest(string $uri, array $params = [], ?array $headers = null): array
     {
         return $this->makeHttpRequest('get', $uri, [
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
@@ -69,7 +69,7 @@ class ApiRequestor
      * @return array
      * @throws mixed
      */
-    public function postRequest(string $uri, array $params = [], array $headers = null): array
+    public function postRequest(string $uri, array $params = [], ?array $headers = null): array
     {
         return $this->makeHttpRequest('post', $uri, [
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
@@ -87,7 +87,7 @@ class ApiRequestor
      * @return array
      * @throws mixed
      */
-    public function patchRequest(string $uri, array $params = [], array $headers = null): array
+    public function patchRequest(string $uri, array $params = [], ?array $headers = null): array
     {
         return $this->makeHttpRequest('patch', $uri, [
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
@@ -105,7 +105,7 @@ class ApiRequestor
      * @return array
      * @throws mixed
      */
-    public function deleteRequest(string $uri, array $params = [], array $headers = null): array
+    public function deleteRequest(string $uri, array $params = [], ?array $headers = null): array
     {
         return $this->makeHttpRequest('delete', $uri, [
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
@@ -114,7 +114,7 @@ class ApiRequestor
         ]);
     }
 
-    public function deleteJson(string $uri, ?array $payload = null, array $headers = null): array
+    public function deleteJson(string $uri, ?array $payload = null, ?array $headers = null): array
     {
         return $this->makeHttpRequest('delete', $uri, [
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),

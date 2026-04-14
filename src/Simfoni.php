@@ -29,7 +29,7 @@ class Simfoni
      * @param  string|null  $baseUri
      * @return void
      */
-    public static function setBaseUri(string $baseUri = null): void
+    public static function setBaseUri(?string $baseUri = null): void
     {
         if ($baseUri) {
             self::$baseUri = $baseUri;
@@ -101,7 +101,7 @@ class Simfoni
      * @param  string|null  $webhookSignature
      * @return void
      */
-    public static function setWebhookSignature(string $webhookSignature = null): void
+    public static function setWebhookSignature(?string $webhookSignature = null): void
     {
         self::$webhookSignature = $webhookSignature;
     }

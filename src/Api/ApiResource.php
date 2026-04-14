@@ -16,7 +16,7 @@ abstract class ApiResource
      *
      * @param ClientInterface|null $client
      */
-    public function __construct(ClientInterface $client = null)
+    public function __construct(?ClientInterface $client = null)
     {
         if ($client === null) {
             $client = new Client([
