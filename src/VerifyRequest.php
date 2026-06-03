@@ -39,7 +39,9 @@ class VerifyRequest
 
     public function computeExpectedHash(array $request): string
     {
-        return hash('SHA256', $this->webhookSignature.json_encode($request));
+        $signature = explode(',', $this->headerSignature);
+        $time = $signature[0] ?? null;
+        return $time.','.hash('SHA256', $this->webhookSignature.$time.json_encode($request));
     }
 
 }

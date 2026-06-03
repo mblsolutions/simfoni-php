@@ -1,3 +1,7 @@
+## v3.1.3
+
++ Fix the validation of webhook signature
+
 ## v3.1.2
 
 + Update V2 cancel link endpoint to use more generic signature.
