@@ -1,3 +1,7 @@
+## v3.1.4
+
++ Add support for php version up to 8.3
+
 ## v3.1.3
 
 + Fix the validation of webhook signature
